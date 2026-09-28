@@ -1,4 +1,4 @@
-# SpendWise 💰
+# SpendWise 
 
 SpendWise is an AI-powered personal expense management platform designed to help users track, understand, and manage their spending.
 
