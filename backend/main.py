@@ -1,3 +1,4 @@
+import os
 from datetime import date
 
 from fastapi import FastAPI, Depends
@@ -14,20 +15,44 @@ from analysis.spending_prediction import predict_next_month_spending
 from analysis.spending_patterns import analyze_spending_patterns
 from analysis.what_if import simulate_spending
 
+
+# Create database tables
 Base.metadata.create_all(bind=engine)
 
+
+# Create FastAPI application
 app = FastAPI(title="Personal Expense Intelligence System")
+
+
+# --------------------------------------------------
+# CORS CONFIGURATION
+# --------------------------------------------------
+
+frontend_url = os.getenv("FRONTEND_URL")
+
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174"
+]
+
+if frontend_url:
+    allowed_origins.append(frontend_url)
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
+# --------------------------------------------------
+# EXPENSE INPUT MODEL
+# --------------------------------------------------
 
 class ExpenseCreate(BaseModel):
     amount: float
@@ -36,12 +61,20 @@ class ExpenseCreate(BaseModel):
     payment_method: str
 
 
+# --------------------------------------------------
+# HOME
+# --------------------------------------------------
+
 @app.get("/")
 def home():
     return {
         "message": "Personal Expense Intelligence System API is running!"
     }
 
+
+# --------------------------------------------------
+# HEALTH CHECK
+# --------------------------------------------------
 
 @app.get("/health")
 def health_check():
@@ -50,26 +83,36 @@ def health_check():
     }
 
 
+# --------------------------------------------------
+# GET ALL EXPENSES
+# --------------------------------------------------
+
 @app.get("/expenses")
 def get_expenses(db: Session = Depends(get_db)):
     expenses = db.query(Expense).all()
+
     return expenses
 
+
+# --------------------------------------------------
+# ADD EXPENSE
+# --------------------------------------------------
 
 @app.post("/expenses")
 def add_expense(
     expense: ExpenseCreate,
     db: Session = Depends(get_db)
 ):
+
     # 1. Predict category using ML
     prediction = categorize_expense(expense.description)
 
     category = prediction["category"]
 
-    # 2. Get previous expenses BEFORE adding the new one
+    # 2. Get previous expenses BEFORE adding the new expense
     previous_expenses = db.query(Expense).all()
 
-    # 3. Check whether this expense is unusual
+    # 3. Detect unusual spending
     unusual_result = detect_unusual_spending(
         previous_expenses,
         expense.amount,
@@ -86,11 +129,12 @@ def add_expense(
         is_subscription=0
     )
 
+    # 5. Save to database
     db.add(new_expense)
     db.commit()
     db.refresh(new_expense)
 
-    # 5. Return complete result
+    # 6. Return complete result
     return {
         "id": new_expense.id,
         "amount": new_expense.amount,
@@ -100,12 +144,17 @@ def add_expense(
         "category": new_expense.category,
         "category_confidence": prediction["confidence"],
         "is_subscription": new_expense.is_subscription,
-
         "unusual_spending": unusual_result
     }
 
+
+# --------------------------------------------------
+# SUBSCRIPTIONS
+# --------------------------------------------------
+
 @app.get("/subscriptions")
 def get_subscriptions(db: Session = Depends(get_db)):
+
     expenses = db.query(Expense).all()
 
     subscriptions = detect_subscriptions(expenses)
@@ -114,21 +163,38 @@ def get_subscriptions(db: Session = Depends(get_db)):
         "subscriptions": subscriptions
     }
 
+
+# --------------------------------------------------
+# NEXT MONTH PREDICTION
+# --------------------------------------------------
+
 @app.get("/prediction")
 def get_spending_prediction(db: Session = Depends(get_db)):
+
     expenses = db.query(Expense).all()
 
     prediction = predict_next_month_spending(expenses)
 
     return prediction
 
+
+# --------------------------------------------------
+# SPENDING PATTERNS
+# --------------------------------------------------
+
 @app.get("/patterns")
 def get_spending_patterns(db: Session = Depends(get_db)):
+
     expenses = db.query(Expense).all()
 
     patterns = analyze_spending_patterns(expenses)
 
     return patterns
+
+
+# --------------------------------------------------
+# WHAT-IF SIMULATOR
+# --------------------------------------------------
 
 @app.get("/what-if")
 def what_if_spending(
@@ -136,6 +202,7 @@ def what_if_spending(
     category: str,
     db: Session = Depends(get_db)
 ):
+
     expenses = db.query(Expense).all()
 
     result = simulate_spending(
