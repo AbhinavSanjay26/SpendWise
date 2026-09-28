@@ -1,0 +1,179 @@
+description,category
+Swiggy dinner,Food
+Swiggy lunch,Food
+Swiggy breakfast,Food
+Swiggy food order,Food
+Swiggy meal,Food
+Zomato dinner,Food
+Zomato lunch,Food
+Zomato food order,Food
+Zomato meal,Food
+restaurant dinner,Food
+restaurant lunch,Food
+restaurant bill,Food
+dinner at restaurant,Food
+lunch at restaurant,Food
+breakfast at cafe,Food
+pizza,Food
+pizza delivery,Food
+biryani,Food
+burger,Food
+sandwich,Food
+coffee,Food
+tea and snacks,Food
+food delivery,Food
+groceries,Food
+supermarket groceries,Food
+milk and groceries,Food
+vegetables,Food
+fruits,Food
+snacks,Food
+Uber ride,Transportation
+Uber to college,Transportation
+Uber cab,Transportation
+Uber trip,Transportation
+Ola ride,Transportation
+Ola cab,Transportation
+Ola trip,Transportation
+cab to college,Transportation
+cab to airport,Transportation
+taxi fare,Transportation
+auto rickshaw,Transportation
+auto fare,Transportation
+bus ticket,Transportation
+bus pass,Transportation
+metro ticket,Transportation
+metro recharge,Transportation
+train ticket,Transportation
+petrol,Transportation
+fuel,Transportation
+car fuel,Transportation
+parking fee,Transportation
+toll payment,Transportation
+Amazon headphones,Shopping
+Amazon shopping,Shopping
+Amazon order,Shopping
+Amazon purchase,Shopping
+Amazon electronics,Shopping
+Amazon laptop,Shopping
+Amazon mobile phone,Shopping
+Amazon smartphone,Shopping
+Amazon keyboard,Shopping
+Amazon mouse,Shopping
+Amazon monitor,Shopping
+Amazon tablet,Shopping
+Amazon computer,Shopping
+Amazon electronic accessories,Shopping
+Flipkart electronics,Shopping
+Flipkart laptop,Shopping
+Flipkart mobile phone,Shopping
+buy headphones,Shopping
+buy laptop,Shopping
+buy smartphone,Shopping
+buy electronics,Shopping
+electronic accessories,Shopping
+computer accessories,Shopping
+bought headphones,Shopping
+new headphones,Shopping
+bought shoes,Shopping
+new shoes,Shopping
+bought shirt,Shopping
+new clothes,Shopping
+clothes shopping,Shopping
+shopping at mall,Shopping
+online shopping,Shopping
+laptop bag,Shopping
+phone case,Shopping
+watch purchase,Shopping
+electronics purchase,Shopping
+gift purchase,Shopping
+home decor,Shopping
+electricity bill,Bills
+electricity payment,Bills
+water bill,Bills
+water payment,Bills
+internet bill,Bills
+internet payment,Bills
+wifi bill,Bills
+mobile phone bill,Bills
+mobile recharge,Bills
+phone recharge,Bills
+rent payment,Bills
+monthly rent,Bills
+house rent,Bills
+gas bill,Bills
+gas cylinder,Bills
+Netflix subscription,Entertainment
+Netflix monthly payment,Entertainment
+Netflix plan,Entertainment
+Netflix renewal,Entertainment
+Netflix membership,Entertainment
+Spotify subscription,Entertainment
+Spotify monthly payment,Entertainment
+Spotify plan,Entertainment
+Spotify renewal,Entertainment
+YouTube Premium,Entertainment
+YouTube Premium subscription,Entertainment
+Amazon Prime subscription,Entertainment
+Amazon Prime monthly payment,Entertainment
+Disney Plus subscription,Entertainment
+Disney Plus monthly payment,Entertainment
+OTT subscription,Entertainment
+movie ticket,Entertainment
+cinema ticket,Entertainment
+movie at theatre,Entertainment
+concert ticket,Entertainment
+gaming purchase,Entertainment
+video game purchase,Entertainment
+PlayStation subscription,Entertainment
+Xbox subscription,Entertainment
+Steam game purchase,Entertainment
+doctor consultation,Healthcare
+doctor appointment,Healthcare
+hospital bill,Healthcare
+hospital visit,Healthcare
+medicine,Healthcare
+medicine from pharmacy,Healthcare
+pharmacy purchase,Healthcare
+medical test,Healthcare
+blood test,Healthcare
+dental treatment,Healthcare
+dentist appointment,Healthcare
+health checkup,Healthcare
+medical consultation,Healthcare
+college tuition fee,Education
+college fees,Education
+semester fees,Education
+course fee,Education
+online course,Education
+online course payment,Education
+textbooks,Education
+college books,Education
+study material,Education
+college supplies,Education
+exam fee,Education
+certification course,Education
+coding course,Education
+hotel booking,Travel
+hotel reservation,Travel
+flight ticket,Travel
+flight booking,Travel
+air ticket,Travel
+vacation expenses,Travel
+holiday expenses,Travel
+tour package,Travel
+travel booking,Travel
+travel hotel,Travel
+trip expenses,Travel
+vacation hotel,Travel
+haircut,Personal Care
+haircut payment,Personal Care
+salon appointment,Personal Care
+salon payment,Personal Care
+spa treatment,Personal Care
+spa appointment,Personal Care
+gym membership,Personal Care
+gym payment,Personal Care
+hair products,Personal Care
+skincare products,Personal Care
+beauty treatment,Personal Care
